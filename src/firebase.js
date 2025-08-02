@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 // Firebase configuration
 // Replace with your actual Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyD6qiwAuo3iz9HXV39iWU1xNVS0pbM7ZxM",
-  authDomain: "shopay-firebase.firebaseapp.com",
-  projectId: "shopay-firebase",
-  storageBucket: "shopay-firebase.firebasestorage.app",
-  messagingSenderId: "204445991752",
-  appId: "1:204445991752:web:92a8ec541cbb2e3b08697d"
+  apiKey:             import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain:         import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:          import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:      import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:  import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId:              import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
