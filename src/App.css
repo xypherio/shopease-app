@@ -1,0 +1,131 @@
+.App {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #f8f9fa;
+}
+
+/* Navbar styling */
+.navbar-brand {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+.nav-link.active {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* Product cards */
+.card {
+  border: 1px solid #ddd;
+  transition: background-color 0.2s ease;
+}
+
+.card:hover {
+  background-color: #f8f9fa;
+  border-color: #bbb;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #666;
+}
+
+/* Price styling */
+.text-muted {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ff5b04 !important;
+}
+
+/* Button styling */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Cart styling */
+.sticky-top {
+  top: 20px;
+}
+
+/* Form styling */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Loading and empty states */
+.text-center {
+  color: #666;
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem;
+}
+
+/* Modal styling */
+.modal-content {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  border-bottom: 1px solid #eee;
+  background-color: #f8f9fa;
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
+  background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+  }
+}
