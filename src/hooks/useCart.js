@@ -59,21 +59,37 @@ export const useCart = () => {
     }
   };
 
-  const removeFromCart = async (cartItemId) => {
-    try {
-      dispatch(cartActions.clearError());
-      dispatch(cartActions.setLoading(true));
+const removeFromCart = async (cartItemId) => {
+  try {
+    dispatch(cartActions.clearError());
+    dispatch(cartActions.setLoading(true));
 
-      // Remove from Firebase
-      await firebaseCartService.removeFromFirebaseCart(cartItemId);
-      
-      // Reload cart to sync with Firebase
-      await loadCartFromFirebase();
-    } catch (error) {
-      console.error('Error removing from cart:', error);
-      dispatch(cartActions.setError('Error removing item from cart. Please try again.'));
-    }
-  };
+    // Find the cart item details first (to get productId and quantity)
+    const cartItem = state.items.find(item => item.id === cartItemId);
+    if (!cartItem) throw new Error('Cart item not found');
+
+    // Fetch the current product stock
+    const productDoc = await productService.getProductById(cartItem.productId);
+    if (!productDoc) throw new Error('Product not found');
+
+    const currentStock = productDoc.stocksLeft || 0;
+    const updatedStock = currentStock + cartItem.quantity;
+
+    // Update the product stock
+    await productService.updateProductStock(cartItem.productId, updatedStock);
+
+    // Remove the item from Firebase cart
+    await firebaseCartService.removeFromFirebaseCart(cartItemId);
+
+    // Reload cart to sync
+    await loadCartFromFirebase();
+
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+    dispatch(cartActions.setError('Error removing item from cart. Please try again.'));
+  }
+};
+
 
   const updateQuantity = async (cartItemId, quantity, unitPrice) => {
     try {

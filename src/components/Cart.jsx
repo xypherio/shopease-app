@@ -69,7 +69,7 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
                     <Badge className="stocks-badge">₱{(item.unitPrice || item.price)?.toFixed(2)} each</Badge>
                   </Col>
                   <Col md={3}>
-                    <div className="d-flex align-items-center justify-content-center">
+                    {/* <div className="d-flex align-items-center justify-content-center">
                       <Button
                         variant="outline-secondary"
                         size="sm"
@@ -92,7 +92,7 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
                       >
                         <Plus size={14} />
                       </Button>
-                    </div>
+                    </div> */}
                   </Col>
                   <Col md={2} className="text-center">
                     <strong>₱{(item.totalPayable || (item.unitPrice || item.price) * item.quantity).toFixed(2)}</strong>
@@ -184,12 +184,7 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
           </div>
           <div className="d-flex justify-content-between align-items-center py-2">
             <h5>Total Amount:</h5>
-            <h5>₱{totalPrice.toFixed(2)}</h5>
-          </div>
-          <div className="mt-3">
-            <p className="text-muted">
-              <strong>Note:</strong> This is a demo checkout. Your order will be saved to the database.
-            </p>
+            <h5 className='text-muted'>₱{totalPrice.toFixed(2)}</h5>
           </div>
         </Modal.Body>
         <Modal.Footer>
