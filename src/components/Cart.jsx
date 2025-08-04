@@ -55,7 +55,7 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
 
   return (
     <div>
-      <h2 className="mb-4">Shopping Cart</h2>
+      <h2 className="mb-4">SHOPPING CART</h2>
       
       <Row>
         <Col lg={8}>
@@ -64,9 +64,9 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
               <Card.Body>
                 <Row className="align-items-center">
                   <Col md={6}>
-                    <h5 className="mb-1">{item.name}</h5>
-                    <p className="text-muted mb-2">{item.description}</p>
-                    <Badge bg="primary">₱{(item.unitPrice || item.price)?.toFixed(2)} each</Badge>
+                    <h5 className="mb-1 text-muted fs-3">{item.name}</h5>
+                    <p className="mb-2 stocks-left fs-5">{item.description}</p>
+                    <Badge className="stocks-badge">₱{(item.unitPrice || item.price)?.toFixed(2)} each</Badge>
                   </Col>
                   <Col md={3}>
                     <div className="d-flex align-items-center justify-content-center">
@@ -133,7 +133,7 @@ const Cart = ({ cart, onRemoveFromCart, onUpdateQuantity, onCheckout, loading })
               </div>
               <Button 
                 variant="success" 
-                className="w-100" 
+                className="w-100 btn-primary" 
                 size="lg"
                 onClick={() => setShowCheckoutModal(true)}
                 disabled={loading || cart.length === 0}

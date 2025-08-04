@@ -33,7 +33,7 @@ const ProductList = ({ products, loading, onAddToCart, onEditProduct, onDeletePr
   return (
     <>
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="mb-0">List of Products</h2>
+        <h2 className="mb-0">LISTS OF PRODUCTS</h2>
         <Button variant="primary" size="md" onClick={onAddProduct}>
           <Plus size={30} className="p-1" />
         </Button>
@@ -54,7 +54,7 @@ const ProductList = ({ products, loading, onAddToCart, onEditProduct, onDeletePr
                       Out of Stock
                     </Badge>
                   ) : (
-                    <Badge bg="success" className="me-2">
+                    <Badge bg="success" className="me-2 stocks-badge">
                       {product.stocksLeft} in stock
                     </Badge>
                   )}

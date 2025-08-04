@@ -1,10 +1,26 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .App {
   min-height: 100vh;
   min-width: 100vw;
   background-color: #f8f9fa;
 }
 
+h2{
+  color: #075056 !important;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 /* Navbar styling */
+.navbar {
+  background-color: #16232b !important;
+  padding: 1rem;
+  color: #fff;
+}
+
 .navbar-brand {
   font-weight: bold;
   display: flex;
@@ -61,13 +77,13 @@
 }
 
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #ff5b04;
+  border-color: #ff5b04;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #e55103;
+  border-color: #e55103;
 }
 
 /* Cart styling */
@@ -98,6 +114,11 @@
   padding: 0.4rem 0.6rem;
 }
 
+.stocks-badge {
+  background-color: #075056 !important;
+  color: #fff;
+}
+
 /* Modal styling */
 .modal-content {
   border-radius: 8px;
@@ -113,19 +134,4 @@
 .modal-footer {
   border-top: 1px solid #eee;
   background-color: #f8f9fa;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-  
-  .card {
-    margin-bottom: 1rem;
-  }
-  
-  .btn {
-    font-size: 0.9rem;
-  }
 }

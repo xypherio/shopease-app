@@ -11,7 +11,7 @@ const Layout = ({ children, cartItemCount = 0 }) => {
         <Container>
           <Navbar.Brand as={Link} to="/">
             <Package className="me-2" size={24} />
-            ShopEase
+            SHOPEASE
           </Navbar.Brand>
           <Nav className="ms-auto">
             <Nav.Link 
@@ -19,7 +19,7 @@ const Layout = ({ children, cartItemCount = 0 }) => {
               to="/"
               className={location.pathname === '/' ? 'active' : ''}
             >
-              Products
+              PRODUCTS
             </Nav.Link>
             <Nav.Link 
               as={Link}
@@ -27,7 +27,7 @@ const Layout = ({ children, cartItemCount = 0 }) => {
               className={location.pathname === '/cart' ? 'active' : ''}
             >
               <ShoppingCart className="me-1" size={20} />
-              Cart ({cartItemCount})
+              CART ({cartItemCount})
             </Nav.Link>
           </Nav>
         </Container>
