@@ -91,12 +91,10 @@ const ProductModal = ({ show, onHide, onSave, product, isEditing }) => {
         <Modal.Title>
           {isEditing ? (
             <>
-              <Edit size={30} className="p-1 mx-2" />
               Edit Product
             </>
           ) : (
             <>
-              <Plus size={30} className="p-1 mx-2" />
               Add New Product
             </>
           )}
