@@ -12,7 +12,6 @@ const ProductModal = ({ show, onHide, onSave, product, isEditing }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Reset form when modal opens/closes or product changes
   useEffect(() => {
     if (show) {
       if (isEditing && product) {

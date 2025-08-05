@@ -1,21 +1,25 @@
-import { useState } from 'react';
-import ProductList from '../components/ProductList';
-import ProductModal from '../components/ProductModal';
-import { useProducts } from '../hooks/useProducts';
+import { useState } from "react";
+import ProductList from "../components/ProductList";
+import ProductModal from "../components/ProductModal";
+import { useProducts } from "../hooks/useProducts";
 
 const ProductsPage = ({ onAddToCart }) => {
-  const { products, loading, addProduct, updateProduct, deleteProduct, refreshProducts } = useProducts();
+  const {
+    products,
+    loading,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    refreshProducts,
+  } = useProducts();
   const [showProductModal, setShowProductModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
 
-  // Enhanced add to cart function that refreshes products
   const handleAddToCart = async (product) => {
     await onAddToCart(product);
-    // Refresh products to update stock levels
     refreshProducts();
   };
 
-  // Modal handlers
   const handleAddProduct = () => {
     setEditingProduct(null);
     setShowProductModal(true);
@@ -41,16 +45,16 @@ const ProductsPage = ({ onAddToCart }) => {
       setShowProductModal(false);
       setEditingProduct(null);
     } catch (error) {
-      console.error('Error saving product:', error);
+      console.error("Error saving product:", error);
     }
   };
 
   const handleDeleteProduct = async (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         await deleteProduct(id);
       } catch (error) {
-        console.error('Error deleting product:', error);
+        console.error("Error deleting product:", error);
       }
     }
   };
@@ -60,15 +64,14 @@ const ProductsPage = ({ onAddToCart }) => {
       <ProductList
         products={products}
         loading={loading}
-        onAddToCart={handleAddToCart}
         onEditProduct={handleEditProduct}
         onDeleteProduct={handleDeleteProduct}
         onAddProduct={handleAddProduct}
       />
-
+      
       <ProductModal
         show={showProductModal}
-        onHide={handleCloseModal}
+        onHide={() => setShowProductModal(false)}
         onSave={handleSaveProduct}
         product={editingProduct}
         isEditing={!!editingProduct}

@@ -1,12 +1,3 @@
-/**
- * Cart Reducer - Manages cart state using Redux-style reducer pattern
- * 
- * This reducer handles all cart state mutations in a predictable, centralized way.
- * It follows the Redux pattern where state is immutable and changes are made
- * through pure functions based on action types.
- */
-
-// Cart Action Types
 export const CART_ACTIONS = {
   SET_LOADING: 'SET_LOADING',
   SET_CART: 'SET_CART',
@@ -18,7 +9,6 @@ export const CART_ACTIONS = {
   CLEAR_ERROR: 'CLEAR_ERROR'
 };
 
-// Initial cart state
 export const initialCartState = {
   items: [],
   loading: false,
@@ -29,8 +19,8 @@ export const initialCartState = {
 
 /**
  * Calculate cart totals from items array
- * @param {Array} items - Array of cart items
- * @returns {Object} Object containing totalItems and totalPrice
+ * @param {Array} items 
+ * @returns {Object}
  */
 const calculateTotals = (items) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -43,11 +33,6 @@ const calculateTotals = (items) => {
 };
 
 /**
- * Cart Reducer Function
- * 
- * Handles all cart state changes based on dispatched actions.
- * Each case returns a new state object to maintain immutability.
- * 
  * @param {Object} state - Current cart state
  * @param {Object} action - Action object with type and payload
  * @returns {Object} New cart state
@@ -154,11 +139,6 @@ export const cartReducer = (state, action) => {
       return state;
   }
 };
-
-/**
- * Action Creators - Helper functions to create action objects
- * These functions ensure consistent action structure and reduce boilerplate
- */
 
 export const cartActions = {
   setLoading: (loading) => ({

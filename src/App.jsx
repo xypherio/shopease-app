@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import ProductsPage from './pages/ProductsPage';
-import CartPage from './pages/CartPage';
+import ProductsPage from './pages/Products';
+import CartPage from './pages/Cart';
 import { useCart } from './hooks/useCart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -9,7 +9,6 @@ import './App.css';
 function App() {
   const {
     cart,
-    loading,
     addToCart,
     removeFromCart,
     updateQuantity,
@@ -35,7 +34,6 @@ function App() {
                 onRemoveFromCart={removeFromCart}
                 onUpdateQuantity={updateQuantity}
                 onCheckout={checkout}
-                loading={loading}
               />
             } 
           />
