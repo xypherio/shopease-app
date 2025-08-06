@@ -14,7 +14,11 @@ h2{
   font-weight: 700;
 }
 
-/* Navbar styling */
+h3 {
+  color: #16232b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 .navbar {
   background-color: #16232b !important;
   padding: 1rem;
@@ -23,6 +27,7 @@ h2{
 
 .navbar-brand {
   font-weight: bold;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
 }
@@ -84,6 +89,11 @@ h2{
 .btn-primary:hover {
   background-color: #e55103;
   border-color: #e55103;
+}
+
+.btn-loading {
+  background-color: #e55103 !important;
+  border-color: #e55103 !important;
 }
 
 /* Cart styling */

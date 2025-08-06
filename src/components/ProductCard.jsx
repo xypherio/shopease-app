@@ -5,15 +5,13 @@ import Badge from './common/Badge';
 
 const ProductCard = ({ product, onAddToCart, onEditProduct, onDeleteProduct }) => {
   const handleDelete = () => {
-    if (window.confirm(`Are you sure you want to delete "${product.name}"?`)) {
-      onDeleteProduct(product.id);
-    }
+    onDeleteProduct(product.id);
   };
 
   return (
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
-        <Card.Title>{product.name}</Card.Title>
+        <Card.Title className='fs-3'>{product.name}</Card.Title>
         <Card.Text className="text-muted mb-2">
           ₱{product.price?.toFixed(2)}
         </Card.Text>

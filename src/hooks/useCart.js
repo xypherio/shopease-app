@@ -145,7 +145,7 @@ const removeFromCart = async (cartItemId) => {
       };
 
       const order = await firebaseCartService.processCheckout(checkoutData);
-      dispatch(cartActions.clearCart()); // Clear cart after successful checkout
+      dispatch(cartActions.clearCart());
       
       return order;
     } catch (error) {

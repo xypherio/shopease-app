@@ -171,6 +171,7 @@ const ProductModal = ({ show, onHide, onSave, product, isEditing }) => {
           variant="primary" 
           onClick={handleSubmit}
           disabled={isSubmitting}
+          className={isSubmitting ? "btn-loading" : ""}
         >
           {isSubmitting 
             ? (isEditing ? 'Updating...' : 'Adding...') 

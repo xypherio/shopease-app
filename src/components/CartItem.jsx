@@ -13,7 +13,9 @@ const CartItem = ({ item, onRemoveFromCart }) => {
             </Badge>
           </Col>
           <Col md={3} xs={6} className="text-center">
-            <span className="fw-semibold">
+            <span
+              className="fw-semibold"
+              style={{ color: item.quantity > 1 ? '' : '' }}>
               {item.quantity} {item.quantity > 1 ? 'pieces' : 'piece'}
             </span>
           </Col>

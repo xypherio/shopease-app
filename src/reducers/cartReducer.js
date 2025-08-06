@@ -1,37 +1,25 @@
-/**
- * Cart Reducer - Manages cart state using Redux-style reducer pattern
- * 
- * This reducer handles all cart state mutations in a predictable, centralized way.
- * It follows the Redux pattern where state is immutable and changes are made
- * through pure functions based on action types.
- */
-
-// Cart Action Types
+// Cart action types
 export const CART_ACTIONS = {
-  SET_LOADING: 'SET_LOADING',
-  SET_CART: 'SET_CART',
-  ADD_ITEM: 'ADD_ITEM',
-  UPDATE_ITEM: 'UPDATE_ITEM',
-  REMOVE_ITEM: 'REMOVE_ITEM',
-  CLEAR_CART: 'CLEAR_CART',
-  SET_ERROR: 'SET_ERROR',
-  CLEAR_ERROR: 'CLEAR_ERROR'
+  SET_LOADING: 'SET_LOADING',     // Toggle loading state
+  SET_CART: 'SET_CART',           // Set the entire cart
+  ADD_ITEM: 'ADD_ITEM',           // Add a new item or increase quantity
+  UPDATE_ITEM: 'UPDATE_ITEM',     // Change quantity of an item
+  REMOVE_ITEM: 'REMOVE_ITEM',     // Remove an item from the cart
+  CLEAR_CART: 'CLEAR_CART',       // Empty the cart
+  SET_ERROR: 'SET_ERROR',         // Set an error message
+  CLEAR_ERROR: 'CLEAR_ERROR'      // Clear any error message
 };
 
 // Initial cart state
 export const initialCartState = {
-  items: [],
-  loading: false,
-  error: null,
-  totalItems: 0,
-  totalPrice: 0
+  items: [],        // List of cart items
+  loading: false,   // Whether cart data is loading
+  error: null,      // Error message (if any)
+  totalItems: 0,    // Total quantity of all items
+  totalPrice: 0     // Total cost of all items
 };
 
-/**
- * Calculate cart totals from items array
- * @param {Array} items - Array of cart items
- * @returns {Object} Object containing totalItems and totalPrice
- */
+// Helper: Calculate total quantity & total price
 const calculateTotals = (items) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => {
@@ -42,16 +30,7 @@ const calculateTotals = (items) => {
   return { totalItems, totalPrice };
 };
 
-/**
- * Cart Reducer Function
- * 
- * Handles all cart state changes based on dispatched actions.
- * Each case returns a new state object to maintain immutability.
- * 
- * @param {Object} state - Current cart state
- * @param {Object} action - Action object with type and payload
- * @returns {Object} New cart state
- */
+// Main reducer function
 export const cartReducer = (state, action) => {
   switch (action.type) {
     case CART_ACTIONS.SET_LOADING:
@@ -80,14 +59,12 @@ export const cartReducer = (state, action) => {
 
       let updatedItems;
       if (existingItemIndex >= 0) {
-        // Update existing item quantity
         updatedItems = state.items.map((item, index) =>
           index === existingItemIndex
             ? { ...item, quantity: item.quantity + newItem.quantity }
             : item
         );
       } else {
-        // Add new item
         updatedItems = [...state.items, newItem];
       }
 
@@ -155,11 +132,7 @@ export const cartReducer = (state, action) => {
   }
 };
 
-/**
- * Action Creators - Helper functions to create action objects
- * These functions ensure consistent action structure and reduce boilerplate
- */
-
+// Action creators: Easy functions to create action objects
 export const cartActions = {
   setLoading: (loading) => ({
     type: CART_ACTIONS.SET_LOADING,

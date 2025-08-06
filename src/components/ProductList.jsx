@@ -26,9 +26,9 @@ const ProductList = ({ products, loading, onAddToCart, onEditProduct, onDeletePr
   return (
     <>
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="mb-0">LISTS OF PRODUCTS</h2>
+        <h2 className="mb-0 fs-4">LISTS OF PRODUCTS</h2>
         <Button variant="primary" size="md" onClick={onAddProduct}>
-          <Plus size={30} className="p-1" />
+          <Plus size={25} className="p-1" />
         </Button>
       </div>
       <Row>

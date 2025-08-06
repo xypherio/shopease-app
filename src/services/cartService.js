@@ -1,6 +1,3 @@
-import * as firebaseCartService from './firebaseCartService';
-
-// Cart service for managing cart operations with Firebase integration
 
 // Add item to cart (local state helper)
 export const addToCart = (cart, product) => {
