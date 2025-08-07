@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import { ShoppingCart, Edit, Trash2 } from 'lucide-react';
-import { isOutOfStock } from '../services/cartService';
+import { isOutOfStock } from '../services/productService';
 import Badge from './common/Badge';
 
 const ProductCard = ({ product, onAddToCart, onEditProduct, onDeleteProduct }) => {

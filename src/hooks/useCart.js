@@ -1,7 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import * as firebaseCartService from '../services/firebaseCartService';
 import * as productService from '../services/productService';
-import * as cartService from '../services/cartService';
 import { cartReducer, initialCartState, cartActions } from '../reducers/cartReducer';
 
 export const useCart = () => {
@@ -27,7 +26,7 @@ export const useCart = () => {
       dispatch(cartActions.clearError());
       
       // Check if product has sufficient stock
-      if (cartService.isOutOfStock(product)) {
+      if (productService.isOutOfStock(product)) {
         dispatch(cartActions.setError('This product is out of stock!'));
         return;
       }

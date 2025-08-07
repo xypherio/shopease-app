@@ -35,7 +35,6 @@ export const addToFirebaseCart = async (product, quantity = 1) => {
     throw error;
   }
 };
-// ...existing code...
 
 // Get all cart items from Firebase
 export const getFirebaseCart = async () => {
@@ -100,7 +99,6 @@ export const processCheckout = async (checkoutData) => {
       items: checkoutData.items,
       totalAmount: checkoutData.totalAmount,
       totalItems: checkoutData.totalItems,
-      customerInfo: checkoutData.customerInfo || {},
       orderDate: new Date(),
       status: 'pending',
       orderNumber: `ORD-${Date.now()}`

@@ -18,6 +18,11 @@ export const fetchProducts = async () => {
   }
 };
 
+// Check if product is out of stock
+export const isOutOfStock = (product) => {
+  return !product.stocksLeft || product.stocksLeft <= 0;
+};
+
 // Add a new product to Firebase
 export const addProduct = async (productData) => {
   try {
