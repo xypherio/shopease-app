@@ -46,10 +46,6 @@ export const useCart = () => {
         await firebaseCartService.addToFirebaseCart(product, quantity);
       }
 
-      // Update product stock
-      const newStockCount = product.stocksLeft - 1;
-      await productService.updateProductStock(product.id, newStockCount);
-
       // Reload cart to sync with Firebase
       await loadCartFromFirebase();
     } catch (error) {
@@ -62,20 +58,6 @@ const removeFromCart = async (cartItemId) => {
   try {
     dispatch(cartActions.clearError());
     dispatch(cartActions.setLoading(true));
-
-    // Find the cart item details first (to get productId and quantity)
-    const cartItem = state.items.find(item => item.id === cartItemId);
-    if (!cartItem) throw new Error('Cart item not found');
-
-    // Fetch the current product stock
-    const productDoc = await productService.getProductById(cartItem.productId);
-    if (!productDoc) throw new Error('Product not found');
-
-    const currentStock = productDoc.stocksLeft || 0;
-    const updatedStock = currentStock + cartItem.quantity;
-
-    // Update the product stock
-    await productService.updateProductStock(cartItem.productId, updatedStock);
 
     // Remove the item from Firebase cart
     await firebaseCartService.removeFromFirebaseCart(cartItemId);
@@ -125,7 +107,7 @@ const removeFromCart = async (cartItemId) => {
     }
   };
 
-  const checkout = async (customerInfo = {}) => {
+  const checkout = async (product) => {
     try {
       dispatch(cartActions.clearError());
       
@@ -140,8 +122,8 @@ const removeFromCart = async (cartItemId) => {
         items: state.items,
         totalAmount: state.totalPrice,
         totalItems: state.totalItems,
-        customerInfo
       };
+
 
       const order = await firebaseCartService.processCheckout(checkoutData);
       dispatch(cartActions.clearCart());

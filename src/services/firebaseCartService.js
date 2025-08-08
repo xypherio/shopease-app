@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc} from 'firebase/firestore';
 import { db } from '../firebase';
 
 const CART_COLLECTION = 'cart';
@@ -93,6 +93,7 @@ export const clearFirebaseCart = async () => {
 };
 
 // Checkout - save order details to Firebase
+// ...existing code...
 export const processCheckout = async (checkoutData) => {
   try {
     const orderData = {
@@ -104,17 +105,31 @@ export const processCheckout = async (checkoutData) => {
       orderNumber: `ORD-${Date.now()}`
     };
 
+    // Update stock for each product in the order
+    if (checkoutData.items && Array.isArray(checkoutData.items)) {
+      for (const item of checkoutData.items) {
+        const productDoc = await getDocs(collection(db, 'shopay_products'));
+        const product = productDoc.docs.find(doc => doc.id === item.productId);
+        if (product) {
+          const currentStock = product.data().stocksLeft || 0;
+          const newStockCount = currentStock - item.quantity;
+          await updateDoc(doc(db, 'shopay_products', item.productId), { stocksLeft: newStockCount });
+        }
+      }
+    }
+
     const docRef = await addDoc(collection(db, CHECKOUT_COLLECTION), orderData);
-    
+
     // Clear cart after successful checkout
     await clearFirebaseCart();
-    
+
     return { id: docRef.id, ...orderData };
   } catch (error) {
     console.error('Error processing checkout:', error);
     throw error;
   }
 };
+// ...existing code...
 
 // Get checkout history
 export const getCheckoutHistory = async () => {

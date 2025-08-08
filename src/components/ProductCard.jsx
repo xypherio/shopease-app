@@ -4,6 +4,7 @@ import { isOutOfStock } from '../services/productService';
 import Badge from './common/Badge';
 
 const ProductCard = ({ product, onAddToCart, onEditProduct, onDeleteProduct }) => {
+  
   const handleDelete = () => {
     onDeleteProduct(product.id);
   };
